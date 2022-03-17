@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const socket = require('socket.io');
 
-const PORT = 3000
+const PORT = 3000;
 
 app.use('/grupo1', express.static(path.join(__dirname, 'public')));
 app.use('/grupo2', express.static(path.join(__dirname, 'public')));
@@ -19,6 +19,8 @@ const messages = {
     grupo1: [],
     grupo2: []
 }
+const userGrupo1 = [];
+const userGrupo2 = [];
 const grupo1 = io.of('/grupo1').on('connection', (socket) => {
     socket.emit('update_messages', messages.grupo1);
     socket.on('new_messages', (data) => {
@@ -31,15 +33,15 @@ const grupo1 = io.of('/grupo1').on('connection', (socket) => {
         grupo1.emit('update_messages', messages.grupo1);
     })
     socket.on('check-user',(user)=>{
-        let userS = messages.grupo1.find(function(i){
-            return i.user == user
+        let users = userGrupo1.find(function(i){
+            return i == user ;
         })
-        console.log(userS)
-       if(userS !== undefined){
-        socket.emit("check-fail", user)
+       if(users !== undefined){
+        socket.emit("check-fail");
        }
        else{
-        socket.emit("check-success", user)
+        userGrupo1.push(user)
+        socket.emit("check-success");
        }
     })
 })
@@ -52,6 +54,18 @@ const grupo2 = io.of('/grupo2').on('connection', (socket) => {
     socket.on('deleteMsg',(id)=>{
         removerPorId(messages.grupo2 , id);
         grupo2.emit('update_messages', messages.grupo2);
+    })
+    socket.on('check-user',(user)=>{
+        let users = userGrupo2.find(function(i){
+            return i == user
+        })
+       if(users !== undefined){
+        socket.emit("check-fail");
+       }
+       else{
+        userGrupo2.push(user);
+        socket.emit("check-success");
+       }
     })
 })
 function removerPorId(array, id) {

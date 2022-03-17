@@ -55,16 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         user = document.forms["user_form_name"]['user'].value;
         socket.emit('check-user' , user);
-        socket.on('check-fail',(users)=>{
-            if ( user == users ) {
-                alert('O nome '+ users +' já foi escolhido');
-                user = "";
-            }
-            
+        socket.on('check-fail',()=>{
+            alert('O nome '+ user +' já foi escolhido');
+            user="";
         })
-        socket.on('check-success',(users)=>{
+        socket.on('check-success',()=>{
              userForm.parentNode.removeChild(userForm)
-             user = users
         })
     })
             
