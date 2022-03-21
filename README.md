@@ -1,7 +1,7 @@
 
 <h1 align="center" >Chat Socket Js<h1>
 <h2 align="center">Chat feito com socket js </h2>
-    <h2 align="center"><a href="https://chat-socketjs-express.herokuapp.com/grupo1/">🔗 Site</a></h2>
+    <h2 align="center"><a href="https://chat-socketjs-express.herokuapp.com/">🔗 Site</a></h2>
 <h1>🚀 Features</h1>
 <ul>
     <li> Adiciona as mensagens em tempo real sem precisar atualizar a página.
