@@ -1,7 +1,7 @@
 
-
+const PORT = process.env.PORT || 5000
 const room = window.location.pathname.replace(/\//g, '')
-const socket = io(`http://localhost:5000/${room}`);
+const socket = io(`http://localhost:${PORT}/${room}`);
 
 let user = "";
 
