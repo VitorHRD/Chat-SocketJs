@@ -18,12 +18,15 @@
        <li> JavaScript
          <li> Node Js
           <li> Node Express
-              <li>Socket.io
+            <li>Socket.io
+             <li>Cors
+
   
  </ul>
  <h1>🚀 Dependências</h1>
-          <li> Node Express
+          <li>Node Express
            <li>Socket.io
+            <li>Cors
               
                 
  
