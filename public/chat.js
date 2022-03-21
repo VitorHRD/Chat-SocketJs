@@ -1,7 +1,6 @@
 
-const PORT = process.env.PORT || 5000
 const room = window.location.pathname.replace(/\//g, '')
-const socket = io(`http://localhost:${PORT}/${room}`);
+const socket = io(`https://chat-socketjs-express.herokuapp.com/${room}`);
 
 let user = "";
 
